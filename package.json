@@ -18,13 +18,22 @@
     "@solana/web3.js": "^1.37.0",
     "next": "12.1.2",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "@metaplex-foundation/js": "^0.20.1",
+    "@metaplex-foundation/mpl-token-metadata": "^2.5.2",
+    "@solana/spl-token": "^0.4.0",
+    "axios": "^1.7.2",
+    "bn.js": "^5.2.1",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "nft.storage": "^7.1.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.2",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "nodemon": "^3.1.4"
   }
 }
