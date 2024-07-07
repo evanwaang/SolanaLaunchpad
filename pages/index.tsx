@@ -5,25 +5,29 @@ import { AppBar } from '../components/AppBar'
 // import { BalanceDisplay } from '../components/BalanceDisplay'
 import { PingButton } from '../components/PingButton'
 import Head from 'next/head'
+import Link from 'next/link';
 
 const Home: NextPage = (props) => {
 
   return (
     <div className={styles.App}>
       <Head>
-        <title>Wallet-Adapter</title>
+        <title>Solana Launchpad</title>
         <meta
           name="description"
-          content="Wallet-Adapter"
+          content="Solana Launchpad"
         />
          <link rel="icon" href="/sol.ico" />
       </Head>
+
+
       <WalletContextProvider>
-        <AppBar />
-        <div className={styles.AppBody}>
-          <PingButton />
-        </div>
+        <AppBar></AppBar>
+
       </WalletContextProvider >
+      <Link href="/createtoken">
+        <button className={styles.myButton}> Create a token</button>
+      </Link>
     </div>
   );
 }

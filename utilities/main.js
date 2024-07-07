@@ -1,8 +1,5 @@
-const fs = require('fs');
-const {createToken} = require('./create_token.js')
-const axios = require('axios')
-const FormData = require('form-data')
-const uploadMD = require('./uploadMD.js')
+import { createToken } from './create_token.mjs';
+import uploadMD from './uploadMD.js';
 
 async function main(NFT_STORAGE_TOKEN, revokeMintBool, revokeFreezeBool, tokenInfo, metaDataforToken, connection, myKeyPair,) {
     console.log("Got to main")
@@ -28,7 +25,7 @@ async function main(NFT_STORAGE_TOKEN, revokeMintBool, revokeFreezeBool, tokenIn
 async function uploadMetaData(NFT_STORAGE_TOKEN, metaDataforToken) {
     const src = './image.png';  // Path to your image file
     data = fs.readFileSync(src);
-    const formData = new FormData();
+
     console.log("Uploading metadata")
       try {
         uri = uploadMD(metaDataforToken.name, metaDataforToken.symbol, metaDataforToken.description, data);
@@ -40,5 +37,4 @@ async function uploadMetaData(NFT_STORAGE_TOKEN, metaDataforToken) {
 }
 
 
-
-module.exports = main;
+export default main;

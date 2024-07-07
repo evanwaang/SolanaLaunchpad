@@ -58,3 +58,11 @@
   border: 0;
   font-family: "Roboto", sans-serif;
 }
+
+.myButton {
+  margin-top: 10px;
+  width: 200px; /* Adjust as needed */
+  display: flex;
+  justify-content: center;
+
+}

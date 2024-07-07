@@ -1,12 +1,12 @@
-const {
+import {
   Keypair,
   PublicKey,
   SystemProgram,
   Transaction,
   sendAndConfirmTransaction,
-} = require("@solana/web3.js");
-const {
-AuthorityType,
+} from "@solana/web3.js";
+import {
+  AuthorityType,
   MINT_SIZE,
   TOKEN_PROGRAM_ID,
   getMinimumBalanceForRentExemptMint,
@@ -15,12 +15,11 @@ AuthorityType,
   createAssociatedTokenAccountInstruction,
   createMintToInstruction,
   createSetAuthorityInstruction,
-} = require("@solana/spl-token");
-const {
+} from "@solana/spl-token";
+import {
   createCreateMetadataAccountV3Instruction,
   PROGRAM_ID,
-} = require("@metaplex-foundation/mpl-token-metadata");
-
+} from "@metaplex-foundation/mpl-token-metadata";
 
 
 async function createToken(connection, myKeyPair, tokenInfo, revokeMintBool, revokeFreezeBool) {
