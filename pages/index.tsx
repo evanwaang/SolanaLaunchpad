@@ -21,10 +21,8 @@ const Home: NextPage = (props) => {
       </Head>
 
 
-      <WalletContextProvider>
         <AppBar></AppBar>
 
-      </WalletContextProvider >
       <Link href="/createtoken">
         <button className={styles.myButton}> Create a token</button>
       </Link>

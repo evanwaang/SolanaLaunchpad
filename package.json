@@ -11,7 +11,7 @@
   "dependencies": {
     "@metaplex-foundation/js": "^0.20.1",
     "@metaplex-foundation/mpl-token-metadata": "^2.5.2",
-    "@solana/spl-token": "^0.4.7",
+    "@solana/spl-token": "^0.4.0",
     "@solana/wallet-adapter-backpack": "^0.1.13",
     "@solana/wallet-adapter-base": "^0.9.22",
     "@solana/wallet-adapter-phantom": "^0.9.22",
@@ -34,6 +34,7 @@
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.2",
     "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
     "typescript": "^4.9.5"
   }
 }

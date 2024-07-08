@@ -1,8 +1,10 @@
+
 import {
   Keypair,
   PublicKey,
   SystemProgram,
   Transaction,
+  Connection,
   sendAndConfirmTransaction,
 } from "@solana/web3.js";
 import {
@@ -21,8 +23,21 @@ import {
   PROGRAM_ID,
 } from "@metaplex-foundation/mpl-token-metadata";
 
+export type TokenInfo = {
+  tokenName: string;
+  symbol: string;
+  metadata: string;
+  decimals: number;
+  amount: number;
+};
 
-async function createToken(connection, myKeyPair, tokenInfo, revokeMintBool, revokeFreezeBool) {
+async function createToken(
+  connection: Connection,
+  myKeyPair: Keypair,
+  tokenInfo: TokenInfo,
+  revokeMintBool: boolean,
+  revokeFreezeBool: boolean
+): Promise<PublicKey> {
   const lamports = await getMinimumBalanceForRentExemptMint(connection);
   const mintKeypair = Keypair.generate();
   const myPublicKey = myKeyPair.publicKey;
@@ -96,7 +111,7 @@ async function createToken(connection, myKeyPair, tokenInfo, revokeMintBool, rev
 
   if (revokeMintBool) {
     let revokeMint = createSetAuthorityInstruction(
-      mintKeypair.publicKey, // mint acocunt || token account
+      mintKeypair.publicKey, // mint account || token account
       myPublicKey, // current auth
       AuthorityType.MintTokens, // authority type
       null
@@ -106,7 +121,7 @@ async function createToken(connection, myKeyPair, tokenInfo, revokeMintBool, rev
 
   if (revokeFreezeBool) {
     let revokeFreeze = createSetAuthorityInstruction(
-      mintKeypair.publicKey, // mint acocunt || token account
+      mintKeypair.publicKey, // mint account || token account
       myPublicKey, // current auth
       AuthorityType.FreezeAccount, // authority type
       null
@@ -114,7 +129,6 @@ async function createToken(connection, myKeyPair, tokenInfo, revokeMintBool, rev
 
     createNewTokenTransaction.add(revokeFreeze);
   }
-  
 
   let blockhash = (await connection.getLatestBlockhash("finalized")).blockhash;
   console.log("blockhash", blockhash);
@@ -133,6 +147,4 @@ async function createToken(connection, myKeyPair, tokenInfo, revokeMintBool, rev
   return mintKeypair.publicKey;
 }
 
-module.exports = {
-  createToken,
-};
+export { createToken };
